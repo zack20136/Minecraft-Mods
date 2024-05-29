@@ -1,4 +1,4 @@
-package net.zack20136.chatmsgtoolmod.commands;
+package net.zack20136.teleportcommandmod.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
@@ -11,10 +11,10 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.IFormattableTextComponent;
 import net.minecraft.util.text.StringTextComponent;
-import net.zack20136.chatmsgtoolmod.assets.CommonFunction;
-import net.zack20136.chatmsgtoolmod.assets.TpsFunction;
-import net.zack20136.chatmsgtoolmod.assets.TpsPosData;
-import net.zack20136.chatmsgtoolmod.assets.TpsPosDataFunction;
+import net.zack20136.teleportcommandmod.assets.CommonFunction;
+import net.zack20136.teleportcommandmod.assets.TpsFunction;
+import net.zack20136.teleportcommandmod.assets.TpsPosData;
+import net.zack20136.teleportcommandmod.assets.TpsPosDataFunction;
 
 import java.io.*;
 import java.util.HashMap;

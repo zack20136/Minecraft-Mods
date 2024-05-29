@@ -1,4 +1,4 @@
-package net.zack20136.chatmsgtoolmod.assets;
+package net.zack20136.teleportcommandmod.assets;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

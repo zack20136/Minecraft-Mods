@@ -1,4 +1,4 @@
-package net.zack20136.chatmsgtoolmod.clients;
+package net.zack20136.teleportcommandmod.clients;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.client.Minecraft;
@@ -7,18 +7,18 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.*;
 import net.minecraftforge.client.event.ClientChatEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.zack20136.chatmsgtoolmod.ChatMsgToolMod;
-import net.zack20136.chatmsgtoolmod.assets.CommonFunction;
-import net.zack20136.chatmsgtoolmod.assets.TpsFunction;
-import net.zack20136.chatmsgtoolmod.assets.TpsPosData;
-import net.zack20136.chatmsgtoolmod.assets.TpsPosDataFunction;
+import net.zack20136.teleportcommandmod.TeleportCommandMod;
+import net.zack20136.teleportcommandmod.assets.CommonFunction;
+import net.zack20136.teleportcommandmod.assets.TpsFunction;
+import net.zack20136.teleportcommandmod.assets.TpsPosData;
+import net.zack20136.teleportcommandmod.assets.TpsPosDataFunction;
 
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-@Mod.EventBusSubscriber(modid = ChatMsgToolMod.MOD_ID)
+@Mod.EventBusSubscriber(modid = TeleportCommandMod.MOD_ID)
 public class TpsClient {
     private Map<String, TpsPosData> tpsPosData = new HashMap<>();
     private ClientPlayerEntity player = Minecraft.getInstance().player;

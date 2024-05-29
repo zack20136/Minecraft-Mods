@@ -1,4 +1,4 @@
-package net.zack20136.chatmsgtoolmod;
+package net.zack20136.teleportcommandmod;
 
 import net.minecraft.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -15,12 +15,12 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Mod(ChatMsgToolMod.MOD_ID)
-public class ChatMsgToolMod {
-    public static final String MOD_ID = "chatmsgtoolmod";
+@Mod(TeleportCommandMod.MOD_ID)
+public class TeleportCommandMod {
+    public static final String MOD_ID = "teleportcommandmod";
     private static final Logger LOGGER = LogManager.getLogger();
 
-    public ChatMsgToolMod() {
+    public TeleportCommandMod() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         eventBus.addListener(this::setup);

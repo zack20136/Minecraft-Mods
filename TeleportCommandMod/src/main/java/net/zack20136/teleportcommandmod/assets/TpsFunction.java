@@ -1,4 +1,4 @@
-package net.zack20136.chatmsgtoolmod.assets;
+package net.zack20136.teleportcommandmod.assets;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.IFormattableTextComponent;

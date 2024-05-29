@@ -1,4 +1,4 @@
-package net.zack20136.chatmsgtoolmod.events;
+package net.zack20136.teleportcommandmod.events;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraftforge.client.event.ClientChatEvent;
@@ -6,13 +6,13 @@ import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.server.command.ConfigCommand;
-import net.zack20136.chatmsgtoolmod.ChatMsgToolMod;
-import net.zack20136.chatmsgtoolmod.clients.TpsClient;
-import net.zack20136.chatmsgtoolmod.commands.TpsCommand;
+import net.zack20136.teleportcommandmod.TeleportCommandMod;
+import net.zack20136.teleportcommandmod.clients.TpsClient;
+import net.zack20136.teleportcommandmod.commands.TpsCommand;
 
 import java.io.File;
 
-@Mod.EventBusSubscriber(modid = ChatMsgToolMod.MOD_ID)
+@Mod.EventBusSubscriber(modid = TeleportCommandMod.MOD_ID)
 public class ModEvents {
 
     @SubscribeEvent

@@ -1,5 +1,5 @@
 # ChatMsgToolMod
-Minecraft 1.16.5 Forge Mod - ChatMsgTool Mod.
+Minecraft 1.16.5 Forge Mod - Teleport Command Mod.
 
 ## InInstalled
 > ```
