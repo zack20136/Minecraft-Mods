@@ -12,12 +12,12 @@ public class TpsFunction {
     public static IFormattableTextComponent tpsPosList(String player, String name, TpsPosData posData){
         BlockPos pos = posData.getPos();
         String dim = posData.getDimension();
-        String desc = !posData.getDescription().isEmpty() ? " \"" + posData.getDescription() + "\"" : "";
+        String desc = !posData.getDescription().isEmpty() ? "\"" + posData.getDescription() + "\"" : "";
 
-        IFormattableTextComponent msg = new StringTextComponent(TextFormatting.BLUE + "  " + name + ": " + pos.getX() + " " + pos.getY() + " " + pos.getZ() + " " + desc + " " + dim);
+        IFormattableTextComponent msg = new StringTextComponent(TextFormatting.AQUA + "  " + name + " >> " + pos.getX() + " " + pos.getY() + " " + pos.getZ() + " " + desc);
         Style style = msg.getStyle()
                 .withClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, getTeleportCommand(player, pos, dim)))
-                .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new StringTextComponent(TextFormatting.BLUE + name + ": " + pos.getX() + " " + pos.getY() + " " + pos.getZ() + " " + desc)));
+                .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new StringTextComponent(TextFormatting.BLUE + name + " >> " + desc + " " + pos.getX() + " " + pos.getY() + " " + pos.getZ() + " " + dim)));
         msg = msg.setStyle(style);
         return msg;
     }

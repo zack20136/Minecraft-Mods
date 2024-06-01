@@ -17,7 +17,7 @@ public class TpsPosDataFunction {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     public static String getCoordinatesFolder() {
-        return "mods/coordinates/";
+        return "mods/tps/coordinates/";
     }
 
     private static String getPlayerCoordinatesFile(CommandSource source) throws CommandSyntaxException {
