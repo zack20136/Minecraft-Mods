@@ -3,27 +3,13 @@ Minecraft 1.16.5 Forge Mod - Teleport Command Mod.
 
 ## InInstalled
 > ```
-> Client-side:
->    Single-player Mode - Players can use TpsFeature and TpsCommand.
->    Multi-player Mode - Players can use TpsFeature.
-> 
 > Server-side:
->    Players can use TpsCommand without having to install this module.
-> ```
+>    Can only install on server.
+>    Players can use "TpsCommand" without having to install this module.
 > 
-
-## TpsFeature
-> ### Permission
-> ```
-> requires '/execute' permission.
-> ```
-> 
-> ### Features
-> ```
-> 1. #list - show all <PosName> that you set. (is clickable to do #<PosName>)
-> 2. #set <PosName> <PosDesc> - set new <PosName> <PosDesc>. (PosName = name, PosDesc = description)
-> 3. #rm <PosName> - remove <PosName>.
-> 4. #<PosName> - teleport to <PosName>. (can teleport in different dimensions.)
+> Client-side:
+>    Single-player Mode - Players can use "TpsFeature" and "TpsCommand".
+>    Multi-player Mode - Players can use "TpsFeature".
 > ```
 > 
 
@@ -39,5 +25,21 @@ Minecraft 1.16.5 Forge Mod - Teleport Command Mod.
 > 2. /tps set <PosName> <PosDesc> - set new <PosName> <PosDesc>. (PosName = name, PosDesc = description)
 > 3. /tps rm <PosName> - remove <PosName>.
 > 4. /tps <PosName> - teleport to <PosName>. (can teleport in different dimensions.)
+> 5. /back (not finish yet.)
+> ```
+> 
+
+## TpsFeature
+> ### Permission
+> ```
+> requires '/execute' permission.
+> ```
+> 
+> ### Features
+> ```
+> 1. #list - show all <PosName> that you set. (is clickable to do #<PosName>)
+> 2. #set <PosName> <PosDesc> - set new <PosName> <PosDesc>. (PosName = name, PosDesc = description)
+> 3. #rm <PosName> - remove <PosName>.
+> 4. #<PosName> - teleport to <PosName>. (can teleport in different dimensions.)
 > ```
 > 

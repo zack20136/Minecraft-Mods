@@ -1,4 +1,4 @@
-package net.zack20136.teleportcommandmod.assets;
+package com.zack20136.teleportcommandmod.assets;
 
 import net.minecraft.util.math.BlockPos;
 

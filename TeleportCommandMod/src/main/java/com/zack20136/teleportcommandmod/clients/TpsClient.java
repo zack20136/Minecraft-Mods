@@ -1,17 +1,17 @@
-package net.zack20136.teleportcommandmod.clients;
+package com.zack20136.teleportcommandmod.clients;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.zack20136.teleportcommandmod.TeleportCommandMod;
+import com.zack20136.teleportcommandmod.assets.CommonFunction;
+import com.zack20136.teleportcommandmod.assets.TpsFunction;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.*;
 import net.minecraftforge.client.event.ClientChatEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.zack20136.teleportcommandmod.TeleportCommandMod;
-import net.zack20136.teleportcommandmod.assets.CommonFunction;
-import net.zack20136.teleportcommandmod.assets.TpsFunction;
-import net.zack20136.teleportcommandmod.assets.TpsPosData;
-import net.zack20136.teleportcommandmod.assets.TpsPosDataFunction;
+import com.zack20136.teleportcommandmod.assets.TpsPosData;
+import com.zack20136.teleportcommandmod.assets.TpsPosDataFunction;
 
 import java.io.File;
 import java.util.HashMap;

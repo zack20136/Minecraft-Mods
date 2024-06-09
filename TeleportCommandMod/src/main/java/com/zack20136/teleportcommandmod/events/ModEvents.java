@@ -1,16 +1,14 @@
-package net.zack20136.teleportcommandmod.events;
+package com.zack20136.teleportcommandmod.events;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.zack20136.teleportcommandmod.TeleportCommandMod;
+import com.zack20136.teleportcommandmod.clients.TpsClient;
+import com.zack20136.teleportcommandmod.commands.TpsCommand;
 import net.minecraftforge.client.event.ClientChatEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.server.command.ConfigCommand;
-import net.zack20136.teleportcommandmod.TeleportCommandMod;
-import net.zack20136.teleportcommandmod.clients.TpsClient;
-import net.zack20136.teleportcommandmod.commands.TpsCommand;
-
-import java.io.File;
 
 @Mod.EventBusSubscriber(modid = TeleportCommandMod.MOD_ID)
 public class ModEvents {

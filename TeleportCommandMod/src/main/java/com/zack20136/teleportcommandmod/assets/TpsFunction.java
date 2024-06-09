@@ -1,4 +1,4 @@
-package net.zack20136.teleportcommandmod.assets;
+package com.zack20136.teleportcommandmod.assets;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.IFormattableTextComponent;
@@ -30,6 +30,10 @@ public class TpsFunction {
         return CommonFunction.getModTitle() + TextFormatting.GREEN + msg;
     }
 
+    public static String tpsSetFail(){
+        return CommonFunction.getModTitle() + TextFormatting.RED + "The names 'list', 'set', 'rm', 'back' are reserved and cannot be used";
+    }
+
     public static String tpsRemoveSuccess(String name){
         String msg = "Remove " + name;
         return CommonFunction.getModTitle() + TextFormatting.GREEN + msg;
@@ -43,6 +47,10 @@ public class TpsFunction {
 
     public static String tpsTeleportFail(String name){
         return CommonFunction.getModTitle() + TextFormatting.RED + "Teleport to " + name + " failed";
+    }
+
+    public static String backFail(){
+        return CommonFunction.getModTitle() + TextFormatting.RED + "No position can go back";
     }
 
     private static String getTeleportCommand(String player, BlockPos pos, String dim){
