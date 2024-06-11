@@ -104,8 +104,6 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    // implementation fg.deobf("pixelmon:Pixelmon-${minecraft_version}-${pixelmon_version}-universal:${pixelmon_version}")
-
     // Any other dependencies go here
     // To shade them do `shadow` rather than `implementation`
 }
@@ -121,7 +119,6 @@ tasks.named('processResources', ProcessResources).configure {
             loader_version_range: loader_version_range,
             mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
             mod_authors: mod_authors, mod_description: mod_description,
-            // pixelmon_version: pixelmon_version
     ]
     inputs.properties replaceProperties
 
@@ -135,7 +132,6 @@ shadowJar {
     setArchiveBaseName(rootProject.name + '-Forge')
 
     // Where you relocate any shaded dependencies
-
 
     exclude 'net.minecraft'
     exclude "**/module-info.class"
@@ -160,7 +156,7 @@ task versionedRelease(type: Copy) { // This creates a jar with a version number 
         include '**/*.jar'
     }
     group "build"
-    from('./build/libs/' + rootProject.name + '-Forge.jar')
+    from('./build/libs/' + rootProject.name + '-' + project.minecraft_version + '-Forge.jar')
     into('release/')
     include '*.jar'
     rename { String filename ->
