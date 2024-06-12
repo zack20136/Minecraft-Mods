@@ -1,32 +1,26 @@
 package com.zack20136.teleportcommandmod.clients;
 
-import com.zack20136.teleportcommandmod.assets.TpsFunction;
-import com.zack20136.teleportcommandmod.assets.TpsTextFunction;
+import com.zack20136.teleportcommandmod.assets.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.*;
 import net.minecraftforge.client.event.ClientChatEvent;
-import com.zack20136.teleportcommandmod.assets.TpsPosData;
-import com.zack20136.teleportcommandmod.assets.TpsPosDataFunction;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class TpsClient {
-    private Map<String, TpsPosData> tpsPosData = new HashMap<>();
-    private ClientPlayerEntity playerEntity = Minecraft.getInstance().player;
-    private UUID playerUUID = playerEntity.getUUID();
-
-    public TpsClient(ClientChatEvent event) {
+public class ClientChatCommands {
+    public static void tps(ClientChatEvent event) {
         String message = event.getMessage();
         if (!message.startsWith("#")) {
             return;
         }
         event.setCanceled(true);
 
-        tpsPosData = TpsPosDataFunction.loadCoordinates(playerUUID);
+        ClientPlayerEntity playerEntity = Minecraft.getInstance().player;
+        UUID playerUUID = playerEntity.getUUID();
+        Map<String, TpsPosData> tpsPosData = TpsPosDataFunction.loadCoordinates(playerUUID);
 
         if (message.equals("#list")) {
             playerEntity.sendMessage(ITextComponent.nullToEmpty(TpsTextFunction.getModTitle()), playerUUID);
@@ -42,6 +36,8 @@ public class TpsClient {
                     case "list":
                     case "set":
                     case "rm":
+                    case "back":
+                        playerEntity.sendMessage(ITextComponent.nullToEmpty(TpsTextFunction.tpsSetFail()), playerUUID);
                         return;
                 }
 
@@ -66,7 +62,7 @@ public class TpsClient {
         } else if (message.startsWith("#")) {
             String name = message.substring(1);
             if (tpsPosData.containsKey(name)) {
-                String command = TpsFunction.getTeleportCommand(playerEntity ,tpsPosData.get(name), true);
+                String command = CommonFunction.getTeleportCommand(playerEntity ,tpsPosData.get(name));
                 playerEntity.chat(command);
             } else {
                 playerEntity.sendMessage(ITextComponent.nullToEmpty(TpsTextFunction.tpsTeleportFail(name)), playerUUID);
