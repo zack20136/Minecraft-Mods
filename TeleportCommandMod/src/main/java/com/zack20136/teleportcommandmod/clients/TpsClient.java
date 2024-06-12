@@ -1,47 +1,38 @@
 package com.zack20136.teleportcommandmod.clients;
 
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.zack20136.teleportcommandmod.TeleportCommandMod;
-import com.zack20136.teleportcommandmod.assets.CommonFunction;
 import com.zack20136.teleportcommandmod.assets.TpsFunction;
+import com.zack20136.teleportcommandmod.assets.TpsTextFunction;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.*;
 import net.minecraftforge.client.event.ClientChatEvent;
-import net.minecraftforge.fml.common.Mod;
 import com.zack20136.teleportcommandmod.assets.TpsPosData;
 import com.zack20136.teleportcommandmod.assets.TpsPosDataFunction;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-@Mod.EventBusSubscriber(modid = TeleportCommandMod.MOD_ID)
 public class TpsClient {
     private Map<String, TpsPosData> tpsPosData = new HashMap<>();
-    private ClientPlayerEntity player = Minecraft.getInstance().player;
-    private UUID playerUUID = player.getUUID();
+    private ClientPlayerEntity playerEntity = Minecraft.getInstance().player;
+    private UUID playerUUID = playerEntity.getUUID();
 
-    public TpsClient(ClientChatEvent event) throws CommandSyntaxException {
+    public TpsClient(ClientChatEvent event) {
         String message = event.getMessage();
         if (!message.startsWith("#")) {
             return;
         }
         event.setCanceled(true);
 
-        File folder = new File(TpsPosDataFunction.getCoordinatesFolder());
-        if (!folder.exists()) {
-            folder.mkdirs();
-        }
-        tpsPosData = TpsPosDataFunction.loadCoordinates(null);
+        tpsPosData = TpsPosDataFunction.loadCoordinates(playerUUID);
 
         if (message.equals("#list")) {
-            player.sendMessage(ITextComponent.nullToEmpty(CommonFunction.getModTitle()), playerUUID);
+            playerEntity.sendMessage(ITextComponent.nullToEmpty(TpsTextFunction.getModTitle()), playerUUID);
             for (Map.Entry<String, TpsPosData> entry : tpsPosData.entrySet()) {
-                IFormattableTextComponent msg = TpsFunction.tpsPosList(player.getName().getString(), entry.getKey(), entry.getValue());
-                player.sendMessage(msg, playerUUID);
+                IFormattableTextComponent msg = TpsFunction.tpsPosList(playerEntity, entry.getKey(), entry.getValue());
+                playerEntity.sendMessage(msg, playerUUID);
             }
         } else if (message.startsWith("#set")) {
             String[] split = message.split(" ", 4);
@@ -54,13 +45,13 @@ public class TpsClient {
                         return;
                 }
 
-                BlockPos pos = player.blockPosition();
-                String dim = player.level.dimension().location().toString();
+                BlockPos pos = playerEntity.blockPosition();
+                String dim = playerEntity.level.dimension().location().toString();
                 String desc = split.length >= 3 ? split[2] : "";
 
                 tpsPosData.put(name, new TpsPosData(pos, dim, desc));
-                tpsPosData = TpsPosDataFunction.saveCoordinates(null, tpsPosData);
-                player.sendMessage(ITextComponent.nullToEmpty(TpsFunction.tpsSetSuccess(name, pos, desc)), playerUUID);
+                tpsPosData = TpsPosDataFunction.saveCoordinates(playerUUID, tpsPosData);
+                playerEntity.sendMessage(ITextComponent.nullToEmpty(TpsTextFunction.tpsSetSuccess(name, pos, desc)), playerUUID);
             }
         } else if (message.startsWith("#rm")) {
             String[] split = message.split(" ");
@@ -68,17 +59,17 @@ public class TpsClient {
                 String name = split[1];
                 if (tpsPosData.containsKey(name)) {
                     tpsPosData.remove(name);
-                    tpsPosData = TpsPosDataFunction.saveCoordinates(null, tpsPosData);
-                    player.sendMessage(ITextComponent.nullToEmpty(TpsFunction.tpsRemoveSuccess(name)), playerUUID);
+                    tpsPosData = TpsPosDataFunction.saveCoordinates(playerUUID, tpsPosData);
+                    playerEntity.sendMessage(ITextComponent.nullToEmpty(TpsTextFunction.tpsRemoveSuccess(name)), playerUUID);
                 }
             }
         } else if (message.startsWith("#")) {
             String name = message.substring(1);
             if (tpsPosData.containsKey(name)) {
-                String command = TpsFunction.getTpsTeleportCommand(player.getName().getString() ,tpsPosData.get(name));
-                player.chat(command);
+                String command = TpsFunction.getTeleportCommand(playerEntity ,tpsPosData.get(name), true);
+                playerEntity.chat(command);
             } else {
-                player.sendMessage(ITextComponent.nullToEmpty(TpsFunction.tpsTeleportFail(name)), playerUUID);
+                playerEntity.sendMessage(ITextComponent.nullToEmpty(TpsTextFunction.tpsTeleportFail(name)), playerUUID);
             }
         }
     }

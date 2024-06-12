@@ -4,14 +4,12 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import net.minecraft.client.Minecraft;
-import net.minecraft.command.CommandSource;
 import net.minecraft.util.math.BlockPos;
 
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class TpsPosDataFunction {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
@@ -20,23 +18,18 @@ public class TpsPosDataFunction {
         return "mods/tps/coordinates/";
     }
 
-    private static String getPlayerCoordinatesFile(CommandSource source) throws CommandSyntaxException {
-        if(source != null){
-            return getCoordinatesFolder() + source.getPlayerOrException().getUUID() + ".json";
-        }
-        else{
-            return getCoordinatesFolder() + Minecraft.getInstance().player.getUUID() + ".json";
-        }
+    private static String getPlayerCoordinatesFile(UUID playerUUID) {
+        return getCoordinatesFolder() + playerUUID + ".json";
     }
 
-    public static Map<String, TpsPosData> loadCoordinates(CommandSource source) throws CommandSyntaxException {
+    public static Map<String, TpsPosData> loadCoordinates(UUID playerUUID) {
         Map<String, TpsPosData> coordinates;
         try{
-            File file = new File(getPlayerCoordinatesFile(source));
+            File file = new File(getPlayerCoordinatesFile(playerUUID));
             if (!file.exists()) {
                 file.createNewFile();
                 coordinates = new HashMap<>();
-                saveCoordinates(source, coordinates);
+                saveCoordinates(playerUUID, coordinates);
                 return coordinates;
             }
 
@@ -65,9 +58,9 @@ public class TpsPosDataFunction {
         }
     }
 
-    public static Map<String, TpsPosData> saveCoordinates(CommandSource source, Map<String, TpsPosData> coordinates) throws CommandSyntaxException {
+    public static Map<String, TpsPosData> saveCoordinates(UUID playerUUID, Map<String, TpsPosData> coordinates) {
         try{
-            File file = new File(getPlayerCoordinatesFile(source));
+            File file = new File(getPlayerCoordinatesFile(playerUUID));
             FileWriter writer = new FileWriter(file);
             JsonObject jsonObject = new JsonObject();
 
