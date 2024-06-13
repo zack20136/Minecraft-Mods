@@ -49,9 +49,25 @@ public class CommonFunction {
         return TpsPosDataFunction.saveCoordinates(playerUUID, posData);
     }
 
-    public static void checkSetBackByCommandEvent(CommandEvent event) {
+    public static void checkSetBackByCommandEvent(CommandEvent event) throws CommandSyntaxException {
         String command = event.getParseResults().getReader().getString();
 
+        // tp
+        if (command.startsWith("/tp ")) {
+            String[] parts = command.split(" ");
+
+            try{
+                PlayerEntity playerEntity = event.getParseResults().getContext().getSource().getPlayerOrException();
+
+                if (playerEntity != null) {
+                    CommonFunction.setBackPos(playerEntity);
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println(e);
+            }
+        }
+
+        // tps
         if (command.startsWith("/execute in ") && command.contains(" run tp ")) {
             String[] parts = command.split(" ");
 

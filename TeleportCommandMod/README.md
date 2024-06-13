@@ -25,7 +25,7 @@ Minecraft 1.16.5 Forge 36.2.34+ Mod - Teleport Command Mod.
 > 2. /tps set <PosName> <PosDesc> - set new <PosName> <PosDesc>. (PosName = name, PosDesc = description)
 > 3. /tps rm <PosName> - remove <PosName>.
 > 4. /tps <PosName> - teleport to <PosName>. (can teleport in different dimensions.)
-> 5. /back (not finish yet.)
+> 5. /back
 > ```
 > 
 

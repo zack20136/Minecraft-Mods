@@ -1,5 +1,6 @@
 package com.zack20136.teleportcommandmod.events;
 
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.zack20136.teleportcommandmod.TeleportCommandMod;
 import com.zack20136.teleportcommandmod.assets.CommonFunction;
 import com.zack20136.teleportcommandmod.clients.ClientChatCommands;
@@ -23,7 +24,7 @@ public class ModEvents {
     }
 
     @SubscribeEvent
-    public static void onCommandExecuted(CommandEvent event) {
+    public static void onCommandExecuted(CommandEvent event) throws CommandSyntaxException {
         CommonFunction.checkSetBackByCommandEvent(event);
     }
 
