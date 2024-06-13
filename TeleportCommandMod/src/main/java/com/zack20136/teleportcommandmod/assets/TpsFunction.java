@@ -37,7 +37,7 @@ public class TpsFunction {
 
         IFormattableTextComponent msg = new StringTextComponent(TextFormatting.AQUA + "  " + name + " >> " + pos.getX() + " " + pos.getY() + " " + pos.getZ() + " " + desc);
         Style style = msg.getStyle()
-                .withClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, CommonFunction.getTeleportCommand(playerEntity, posData)))
+                .withClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, CommonFunction.getTeleportPosCommand(playerEntity, posData)))
                 .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new StringTextComponent(TextFormatting.BLUE + name + " >> " + desc + " " + pos.getX() + " " + pos.getY() + " " + pos.getZ() + " " + dim)));
         msg = msg.setStyle(style);
         return msg;
@@ -89,7 +89,7 @@ public class TpsFunction {
         if (tpsPosData.containsKey(name)) {
             // teleport
             MinecraftServer server = source.getServer();
-            String command = CommonFunction.getTeleportCommand(playerEntity, tpsPosData.get(name));
+            String command = CommonFunction.getTeleportPosCommand(playerEntity, tpsPosData.get(name));
             server.getCommands().performCommand(server.createCommandSourceStack(), command);
             return 1;
         } else {

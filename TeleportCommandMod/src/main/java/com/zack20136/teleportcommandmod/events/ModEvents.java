@@ -16,7 +16,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @Mod.EventBusSubscriber(modid = TeleportCommandMod.MOD_ID)
 public class ModEvents {
-
     @SubscribeEvent
     public static void onCommandsRegister(RegisterCommandsEvent event) {
         Commands.init(event.getDispatcher());

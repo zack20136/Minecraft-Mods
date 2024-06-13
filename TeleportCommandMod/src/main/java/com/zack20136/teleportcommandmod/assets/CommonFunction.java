@@ -13,7 +13,7 @@ import java.util.UUID;
 
 public class CommonFunction {
 
-    public static String getTeleportCommand(PlayerEntity playerEntity, TpsPosData posData){
+    public static String getTeleportPosCommand(PlayerEntity playerEntity, TpsPosData posData){
         String player = playerEntity.getStringUUID();
         String dim = posData.getDimension();
         BlockPos pos = posData.getPos();
@@ -27,7 +27,7 @@ public class CommonFunction {
         if (posData.containsKey("back")) {
             // teleport
             MinecraftServer server = source.getServer();
-            String command = CommonFunction.getTeleportCommand(playerEntity, posData.get("back"));
+            String command = CommonFunction.getTeleportPosCommand(playerEntity, posData.get("back"));
             server.getCommands().performCommand(server.createCommandSourceStack(), command);
             // remove
             posData.remove("back");

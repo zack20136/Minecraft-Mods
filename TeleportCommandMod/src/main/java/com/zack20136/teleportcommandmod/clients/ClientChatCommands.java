@@ -62,7 +62,7 @@ public class ClientChatCommands {
         } else if (message.startsWith("#")) {
             String name = message.substring(1);
             if (tpsPosData.containsKey(name)) {
-                String command = CommonFunction.getTeleportCommand(playerEntity ,tpsPosData.get(name));
+                String command = CommonFunction.getTeleportPosCommand(playerEntity ,tpsPosData.get(name));
                 playerEntity.chat(command);
             } else {
                 playerEntity.sendMessage(ITextComponent.nullToEmpty(TpsTextFunction.tpsTeleportFail(name)), playerUUID);
