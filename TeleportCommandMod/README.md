@@ -1,5 +1,5 @@
-# ChatMsgToolMod
-Minecraft 1.16.5 Forge 36.2.34+ Mod - Teleport Command Mod.
+# TeleportCommandSet
+Minecraft 1.16.5 Forge 36.2.34+ Mod - Teleport Command Set Mod.
 
 ## Installed
 > ```
